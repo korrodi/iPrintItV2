@@ -24,7 +24,17 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        $this->registerUserPolicies();
 
         //
+    }
+
+    public function registerUserPolicies(){
+        Gate::define('create-destroy', function($user){
+            return $user->type=='0';
+        });
+        Gate::degine('edit',function($loggedUser,\App\User $user){
+            return 
+        });
     }
 }
